@@ -1,0 +1,11 @@
+{
+  "name": "test-bot",
+  "version": "0.0.1",
+  "description": "test-bot-test",
+  "main": "app.js",
+  "author": "Mylon",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "express": "^4.16.3"
+  }
+}
