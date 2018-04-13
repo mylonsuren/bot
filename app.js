@@ -21,14 +21,10 @@ client.on('message', message => {
   if (message.content.substring(0,1) == '!') {
     var args = message.content.substring(1).split(' ');
     var cmd = args[0];
-    console.log("CMD : " + cmd);
-
     switch(cmd) {
       case 'kick' :
         kickUser(message);
         break;
-      default : 
-        // message.channel.send('Invalid action.');
     }
   }
 });
@@ -42,6 +38,9 @@ function kickUser(message) {
     console.log(user);
     const id = user.id;
     const member = message.guild.members.get(id);
+    if (user.username === auth.user) {
+      return;
+    }
     member.kick();
     console.log(message.author.username);
     message.channel.send(user.username + " was removed by " + message.author);
