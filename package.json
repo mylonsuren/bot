@@ -6,5 +6,18 @@
   "author": "Mylon",
   "dependencies": {
     "discord.js": "^11.3.2"
-  }
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mylonsuren/bot.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mylonsuren/bot/issues"
+  },
+  "homepage": "https://github.com/mylonsuren/bot#readme"
 }
