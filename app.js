@@ -13,7 +13,6 @@ const client = new Discord.Client({
 
 client.on('ready', () => {
   console.log('Client is ready.');
-  // console.log(client);
 });
 
 
@@ -25,14 +24,11 @@ client.on('message', message => {
     console.log("CMD : " + cmd);
 
     switch(cmd) {
-      case 'ping' :
-        message.channel.send('Pong!');
-        break;
       case 'kick' :
         kickUser(message);
         break;
       default : 
-        message.channel.send('Invalid message');
+        // message.channel.send('Invalid action.');
     }
   }
 });
