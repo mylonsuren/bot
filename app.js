@@ -25,6 +25,8 @@ client.on('message', message => {
       case 'kick' :
         kickUser(message);
         break;
+      default : 
+        message.channel.send('Invalid action.');
     }
   }
 });
