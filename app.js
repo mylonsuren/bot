@@ -1,10 +1,29 @@
 
 // discord-bot-test
 
-var discord = require('discord.js');
-var request = require('request');
+const discord = require('discord.js');
+const request = require('request');
+const fetch = require('isomorphic-fetch')
 
 
+var query = `
+query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+  Page (page: $page, perPage: $perPage) {
+    pageInfo {
+      total
+      currentPage
+      lastPage
+      hasNextPage
+      perPage
+    }
+    media (id: $id, search: $search) {
+      id
+      title {
+        romaji
+      }
+    }
+  }
+}`;
 
 
 request('https://raw.githubusercontent.com/mylonsuren/practice/master/application.json', function (error, response, body) {
@@ -19,6 +38,7 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
       
     client.on('ready', () => {
       console.log('Client is ready.');
+
     });
 
     client.on('message', message => {
@@ -29,6 +49,9 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
         switch(cmd) {
           case 'kick' :
             kickUser(message);
+            break;
+          case 'search' : 
+            searchAnime(message);
             break;
           default : 
             // message.channel.send('Invalid action.');
@@ -53,6 +76,89 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
         message.channel.send(user.username + " was removed by " + message.author);
       });
     }
+
+    function searchAnime(message) {
+      var animeSearch = message.content.split("!search")[1];
+      console.log(animeSearch);
+      getRequest(animeSearch, message);
+    }
+
+    function composeMessageSuccess(list, message) {
+      var response = "**" + list[0].title.romaji + "**";
+
+      message.channel.send(response + "\n https://anilist.co/anime/" + list[0].id)
+
+    }
+
+
+    function getRequest(value, message) {
+      var query = `
+        query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+          Page (page: $page, perPage: $perPage) {
+            pageInfo {
+              total
+              currentPage
+              lastPage
+              hasNextPage
+              perPage
+            }
+            media (id: $id, search: $search) {
+              id
+              title {
+                romaji
+              }
+            }
+          }
+        }`;
+
+      var variables = {
+          search: value,
+          page: 1,
+          perPage: 1
+      };
+
+      var url = 'https://graphql.anilist.co',
+          options = {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+              },
+              body: JSON.stringify({
+                  query: query,
+                  variables: variables
+              })
+          };
+
+      fetch(url, options).then(handleResponse)
+                        .then(handleData)
+                        .catch(handleError);
+
+      function handleResponse(response) {
+          return response.json().then(function (json) {
+              return response.ok ? json : Promise.reject(json);
+          });
+      }
+
+      function handleData(data) {
+          var list = data.data;
+          var text = list.Page.media;
+          text.forEach(function (anime) {
+              console.log(anime.id);
+              console.log('https://myanimelist.net/anime/' + anime.id)
+          });
+
+          composeMessageSuccess(text, message);
+      }
+
+      function handleError(error) {
+          console.error(error);
+
+          message.channel.send("Sorry, could not find that anime.");
+
+      }
+    }
+
 
   }
 })
