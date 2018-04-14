@@ -56,6 +56,8 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
           default : 
             // message.channel.send('Invalid action.');
         }
+      } else if (message.content.includes("nichijou")) {
+        message.channel.send("smh")
       }
     });
     
