@@ -4,6 +4,18 @@
 const discord = require('discord.js');
 const request = require('request');
 const fetch = require('isomorphic-fetch')
+const express = require('express');
+
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
 
 
 var query = `
@@ -80,7 +92,7 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
     }
 
     function searchAnime(message) {
-      var animeSearch = message.content.split("!search")[1];
+      var animeSearch = message.content.split("!search ")[1];
       console.log(animeSearch);
       getRequest(animeSearch, message);
     }
