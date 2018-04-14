@@ -1,30 +1,26 @@
 
 // discord-bot-test
 
-var Discord = require('discord.js');
+var discord = require('discord.js');
 var request = require('request');
-// var auth = require('./auth.json');
 
 
 
 
 request('https://raw.githubusercontent.com/mylonsuren/practice/master/application.json', function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    console.log("HERE");
     var auth = JSON.parse(body);
-    console.log(auth);
 
-    const client = new Discord.Client({
+    const client = new discord.Client({
       token: auth.token,
       autorun: true
     });
-    
-    
+
+      
     client.on('ready', () => {
       console.log('Client is ready.');
     });
-    
-    
+
     client.on('message', message => {
     
       if (message.content.substring(0,1) == '!') {
@@ -35,7 +31,7 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
             kickUser(message);
             break;
           default : 
-            message.channel.send('Invalid action.');
+            // message.channel.send('Invalid action.');
         }
       }
     });
