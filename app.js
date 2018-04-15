@@ -5,6 +5,7 @@ const discord = require('discord.js');
 const request = require('request');
 const fetch = require('isomorphic-fetch')
 const express = require('express');
+var http = require("http");
 
 var app = express();
 
@@ -16,6 +17,12 @@ app.get('/', function(request, response) {
 }).listen(app.get('port'), function() {
     console.log('App is running, server is listening on port ', app.get('port'));
 });
+
+
+
+setInterval(function() {
+    http.get("https://turtles-bot.herokuapp.com/m");
+}, 300000); // every 5 minutes (300000)
 
 
 var query = `
