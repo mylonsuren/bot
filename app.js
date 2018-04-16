@@ -72,6 +72,9 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
           case 'search' : 
             searchAnime(message);
             break;
+          case 'name' :
+            changeName(message);
+            break;
           default : 
             // message.channel.send('Invalid action.');
         }
@@ -82,6 +85,20 @@ request('https://raw.githubusercontent.com/mylonsuren/practice/master/applicatio
     
     
     client.login(auth.token);
+
+    function changeName(message) {
+      const users = message.mentions.users;
+      
+      users.forEach(function (user) {
+        const id = user.id;
+        const member = message.guild.members.get(id);
+        const newName = message.content.split(" ")[3];
+        console.log(newName);
+        member.setNickname(newName);
+      });
+
+
+    }
     
     function kickUser(message) {
       const users = message.mentions.users;
