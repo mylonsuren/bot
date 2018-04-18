@@ -39,7 +39,7 @@ client.on('message', message => {
       case 'kick':
         kickUser(message);
         break;
-      case 'search':
+      case 'find':
         searchAnime(message);
         break;
       case 'name':
@@ -61,7 +61,7 @@ client.on('message', message => {
 client.login(auth.token);
 
 function help (message) {
-  const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Search Anime : !search animeTitle";
+  const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Search Anime : !find animeTitle";
   message.channel.send(text);
 }
 
