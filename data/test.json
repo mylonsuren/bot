@@ -1,0 +1,152 @@
+Collection {
+  '267790240092127232' => GuildMember {
+  guild:
+   Guild {
+     members: [Circular
+      ],
+     channels: [Object
+      ],
+     roles: [Object
+      ],
+     presences: [Object
+      ],
+     available: true,
+     id: '434815844066000898',
+     name: 'test',
+     icon: '8838634bf04f85dd17b0464091e46efc',
+     splash: null,
+     region: 'us-east',
+     memberCount: 2,
+     large: false,
+     features: [],
+     applicationID: null,
+     afkTimeout: 300,
+     afkChannelID: null,
+     systemChannelID: '434815846054101015',
+     embedEnabled: undefined,
+     verificationLevel: 0,
+     explicitContentFilter: 0,
+     joinedTimestamp: 1523738628453,
+     ownerID: '267790240092127232',
+     _rawVoiceStates: Collection {},
+     emojis: Collection {}
+    },
+  user:
+   User {
+     id: '267790240092127232',
+     username: 'Mylon',
+     discriminator: '5773',
+     avatar: '39cb1c2997c805b281f13052b7f7f676',
+     bot: false,
+     lastMessageID: '436213613649461248',
+     lastMessage: [Object
+      ]
+    },
+  _roles: [],
+  serverDeaf: false,
+  serverMute: false,
+  selfMute: undefined,
+  selfDeaf: undefined,
+  voiceSessionID: undefined,
+  voiceChannelID: undefined,
+  speaking: false,
+  nickname: null,
+  joinedTimestamp: 1523738575870,
+  lastMessageID: '436213613649461248',
+  lastMessage:
+   Message {
+     channel: [Object
+      ],
+     id: '436213613649461248',
+     type: 'DEFAULT',
+     content: '!invite Mylon',
+     author: [Object
+      ],
+     member: [Circular
+      ],
+     pinned: false,
+     tts: false,
+     nonce: '436213613120716800',
+     system: false,
+     embeds: [],
+     attachments: Collection {},
+     createdTimestamp: 1524071829951,
+     editedTimestamp: null,
+     reactions: Collection {},
+     mentions: [Object
+      ],
+     webhookID: null,
+     hit: null,
+     _edits: []
+    }
+  },
+  '434409736948154379' => GuildMember {
+  guild:
+   Guild {
+     members: [Circular
+      ],
+     channels: [Object
+      ],
+     roles: [Object
+      ],
+     presences: [Object
+      ],
+     available: true,
+     id: '434815844066000898',
+     name: 'test',
+     icon: '8838634bf04f85dd17b0464091e46efc',
+     splash: null,
+     region: 'us-east',
+     memberCount: 2,
+     large: false,
+     features: [],
+     applicationID: null,
+     afkTimeout: 300,
+     afkChannelID: null,
+     systemChannelID: '434815846054101015',
+     embedEnabled: undefined,
+     verificationLevel: 0,
+     explicitContentFilter: 0,
+     joinedTimestamp: 1523738628453,
+     ownerID: '267790240092127232',
+     _rawVoiceStates: Collection {},
+     emojis: Collection {}
+    },
+  user:
+   ClientUser {
+     id: '434409736948154379',
+     username: 'test-bot',
+     discriminator: '7363',
+     avatar: null,
+     bot: true,
+     lastMessageID: null,
+     lastMessage: null,
+     verified: true,
+     email: null,
+     localPresence: {},
+     _typing: Map {},
+     friends: Collection {},
+     blocked: Collection {},
+     notes: Collection {},
+     premium: null,
+     mfaEnabled: false,
+     mobile: null,
+     settings: [Object
+      ],
+     guildSettings: Collection {}
+    },
+  _roles: [ '434816065285914624'
+    ],
+  serverDeaf: false,
+  serverMute: false,
+  selfMute: undefined,
+  selfDeaf: undefined,
+  voiceSessionID: undefined,
+  voiceChannelID: undefined,
+  speaking: false,
+  nickname: 'good bot',
+  joinedTimestamp: 1523738628453,
+  lastMessageID: null,
+  lastMessage: null
+  }
+}
