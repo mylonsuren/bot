@@ -1,5 +1,5 @@
 
-// discord-bot-test
+
 
 const discord = require('discord.js');
 const request = require('request');
@@ -46,9 +46,12 @@ client.on('message', message => {
         changeName(message);
         break;
       case 'invite' :
-        inviteUser(message);
+        // inviteUser(message);
+        break;
+      case 'help' :
+      case 'commands' :
       default:
-      // message.channel.send('Invalid action.');
+        help(message);
     }
   } else if (message.content.toLowerCase().includes(other.n)) {
     message.channel.send(other.reply1);
@@ -57,6 +60,11 @@ client.on('message', message => {
 
 
 client.login(auth.token);
+
+function help (message) {
+  const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Search Anime : !search animeTitle";
+  message.channel.send(text);
+}
 
 function inviteUser(message) {
   const user = message.content.split(" ")[1];
@@ -67,8 +75,6 @@ function inviteUser(message) {
   message.channel.createInvite()
     .then(invite => getUser(message, user, invite))
     .catch(console.error)
-  
-
 }
 
 function getUser(message, user, invite) {
@@ -78,7 +84,7 @@ function getUser(message, user, invite) {
     console.log(user);
     if (member.names.includes(user)) {
       console.log((member.id));
-      // console.log(client.fetchUser(member.id));
+      console.log(client.fetchUser(member.id));
       client.fetchUser(member.id)
         .then(user => console.log(user))
         .catch(console.error);
