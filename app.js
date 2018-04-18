@@ -11,42 +11,40 @@ const app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function(request, response) {
-    var result = 'App is running';
-    response.send(result);
-}).listen(app.get('port'), function() {
-    console.log('App is running, server is listening on port ', app.get('port'));
+app.get('/', function (request, response) {
+  var result = 'App is running';
+  response.send(result);
+}).listen(app.get('port'), function () {
+  console.log('App is running, server is listening on port ', app.get('port'));
 });
-
 
 const client = new discord.Client({
   token: auth.token,
   autorun: true
 });
 
-  
+
 client.on('ready', () => {
   console.log('Client is ready.');
-
 });
 
 client.on('message', message => {
 
-  if (message.content.substring(0,1) == '!') {
+  if (message.content.substring(0, 1) == '!') {
     var args = message.content.substring(1).split(' ');
     var cmd = args[0];
-    switch(cmd) {
-      case 'kick' :
+    switch (cmd) {
+      case 'kick':
         kickUser(message);
         break;
-      case 'search' : 
+      case 'search':
         searchAnime(message);
         break;
-      case 'name' :
+      case 'name':
         changeName(message);
         break;
-      default : 
-        // message.channel.send('Invalid action.');
+      default:
+      // message.channel.send('Invalid action.');
     }
   } else if (message.content.toLowerCase().includes("nichijou")) {
     message.channel.send(auth.message1);
@@ -58,18 +56,19 @@ client.login(auth.token);
 
 function changeName(message) {
   const users = message.mentions.users;
-  
+
   users.forEach(function (user) {
     const id = user.id;
     const member = message.guild.members.get(id);
     const newName = message.content.split(" ");
-    var name = newName[3];
+    var name = newName[2];
     newName.forEach(function (word, index) {
-      if (index >= 4) {
+      if (index >= 3) {
         name += " " + word;
       }
     });
-    console.log(newName);
+    // console.log(newName);
+    console.log(name);
     member.setNickname(name);
   });
 }
@@ -124,48 +123,48 @@ function getRequest(value, message) {
     }`;
 
   var variables = {
-      search: value,
-      page: 1,
-      perPage: 1
+    search: value,
+    page: 1,
+    perPage: 1
   };
 
   var url = auth.url,
-      options = {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-              query: query,
-              variables: variables
-          })
-      };
+    options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query: query,
+        variables: variables
+      })
+    };
 
   fetch(url, options).then(handleResponse)
-                    .then(handleData)
-                    .catch(handleError);
+    .then(handleData)
+    .catch(handleError);
 
   function handleResponse(response) {
-      return response.json().then(function (json) {
-          return response.ok ? json : Promise.reject(json);
-      });
+    return response.json().then(function (json) {
+      return response.ok ? json : Promise.reject(json);
+    });
   }
 
   function handleData(data) {
-      var list = data.data;
-      var text = list.Page.media;
-      text.forEach(function (anime) {
-          console.log(anime.id);
-      });
+    var list = data.data;
+    var text = list.Page.media;
+    text.forEach(function (anime) {
+      console.log(anime.id);
+    });
 
-      composeMessageSuccess(text, message);
+    composeMessageSuccess(text, message);
   }
 
   function handleError(error) {
-      console.error(error);
+    console.error(error);
 
-      message.channel.send(auth.message2);
+    message.channel.send(auth.message2);
 
   }
 }
