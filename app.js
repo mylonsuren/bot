@@ -199,9 +199,7 @@ function getRequest(value, message) {
 
   function handleError(error) {
     console.error(error);
-
     message.channel.send(other.reply2);
-
   }
 }
 });
