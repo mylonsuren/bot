@@ -50,7 +50,6 @@ client.on('message', message => {
         break;
       case 'help' :
       case 'commands' :
-      default:
         help(message);
     }
   } else if (message.content.toLowerCase().includes(other.n)) {
