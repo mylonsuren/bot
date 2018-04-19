@@ -39,7 +39,7 @@ client.on('message', message => {
       case 'kick':
         kickUser(message);
         break;
-      case 'find':
+      case 'anime':
         searchAnime(message);
         break;
       case 'name':
@@ -61,7 +61,7 @@ client.on('message', message => {
 client.login(auth.token);
 
 function help (message) {
-  const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Search Anime : !find animeTitle";
+  const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Find Anime : !anime animeTitle";
   message.channel.send(text);
 }
 
@@ -133,7 +133,7 @@ function kickUser(message) {
 }
 
 function searchAnime(message) {
-  var animeSearch = message.content.split("!find ")[1];
+  var animeSearch = message.content.split("!anime ")[1];
   console.log(animeSearch);
   getRequest(animeSearch, message);
 }
