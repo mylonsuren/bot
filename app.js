@@ -13,14 +13,21 @@ const app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-setInterval(function () {
-  http.get("https://turtles-bot.herokuapp.com/");
-}, 300000);
+// setInterval(function () {
+ 
+// }, 300);
 
 app.get('/', function (request, response) {
   var result = 'App is running';
   response.send(result);
-}).listen(app.get('port'), function () {
+})
+
+app.get('/quit', function(req,res) {
+  res.send('closing..');
+  http.get("https://turtles-bot.herokuapp.com/");
+})
+
+app.listen(app.get('port'), function () {
   console.log('App is running, server is listening on port ', app.get('port'));
 
 
