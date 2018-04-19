@@ -45,8 +45,8 @@ client.on('message', message => {
       case 'name':
         changeName(message);
         break;
-      case 'invite' :
-        // inviteUser(message);
+      case 'add' :
+        inviteUser(message);
         break;
       case 'help' :
       case 'commands' :
@@ -67,9 +67,9 @@ function help (message) {
 
 function inviteUser(message) {
   const user = message.content.split(" ")[1];
-  console.log(user);
+  // console.log(user);
 
-  console.log(message.guild.members);
+  // console.log(message.guild.members);
 
   message.channel.createInvite()
     .then(invite => getUser(message, user, invite))
@@ -79,16 +79,25 @@ function inviteUser(message) {
 function getUser(message, user, invite) {
   for (key in members) {
     var member = members[key];
-    console.log(member);
-    console.log(user);
+    // console.log(member);
+    // console.log(user);
     if (member.names.includes(user)) {
-      console.log((member.id));
-      console.log(client.fetchUser(member.id));
+      // console.log(client.fetchUser(member.id));
+      // console.log(invite.url)
       client.fetchUser(member.id)
-        .then(user => console.log(user))
+        .then(person => dmUser(person, invite))
         .catch(console.error);
+
+      break;
     }
   }
+}
+
+function dmUser(user, invite) {
+  // user.createDM();
+  console.log(invite.url);
+  console.log(user);
+  user.send(invite.url);
 }
 
 function changeName(message) {
