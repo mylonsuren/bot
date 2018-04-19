@@ -48,8 +48,8 @@ client.on('message', message => {
       case 'add' :
         inviteUser(message);
         break;
+      case '?' :
       case 'help' :
-      case 'commands' :
         help(message);
     }
   } else if (message.content.toLowerCase().includes(other.n)) {
@@ -124,6 +124,8 @@ function kickUser(message) {
     const id = user.id;
     const member = message.guild.members.get(id);
     if (user.username.toLowerCase() === members[0].names[0].toLowerCase()) {
+      return;
+    } else if (message.author.username.toLowerCase === members[3].names[0].toLowerCase()) {
       return;
     }
     member.kick();
