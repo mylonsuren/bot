@@ -83,7 +83,7 @@ app.listen(app.get('port'), function () {
       var member = members[key];
       if (member.names.includes(user)) {
         client.fetchUser(member.id)
-          .then(person => dmUser(person, invite))
+          .then(person => dmUser(person, invite, message))
           .catch(console.error);
 
         break;
@@ -91,11 +91,18 @@ app.listen(app.get('port'), function () {
     }
   }
 
-  function dmUser(user, invite) {
+  function dmUser(user, invite, value) {
     // user.createDM();
     user.send(invite.url)
       .then(message => console.log(`Sent message: ${message.content}`))
-      .catch(console.error);
+      .catch(error => dmUserError(error, user, value));
+  }
+
+  function dmUserError(error, user, message) {
+    console.log(error);
+
+    message.channel.send("Sorry, unable to invite ***" + user.username + "*** \nPlease create an invite manually.")
+
   }
 
   function changeName(message) {
