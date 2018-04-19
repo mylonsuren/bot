@@ -13,10 +13,6 @@ const app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-// setInterval(function () {
- 
-// }, 300);
-
 app.get('/', function (request, response) {
   var result = 'App is running';
   response.send(result);
@@ -29,8 +25,6 @@ app.get('/quit', function(req,res) {
 
 app.listen(app.get('port'), function () {
   console.log('App is running, server is listening on port ', app.get('port'));
-
-
 
   const client = new discord.Client({
     token: auth.token,
@@ -46,7 +40,6 @@ app.listen(app.get('port'), function () {
   });
 
   client.on('message', message => {
-
     if (message.content.substring(0, 1) == '!') {
       var args = message.content.substring(1).split(' ');
       var cmd = args[0];
@@ -67,8 +60,6 @@ app.listen(app.get('port'), function () {
         case 'help':
           help(message);
       }
-    } else if (message.content.toLowerCase().includes(other.n)) {
-      message.channel.send(other.reply1);
     }
   });
 
@@ -82,10 +73,6 @@ app.listen(app.get('port'), function () {
 
   function inviteUser(message) {
     const user = message.content.split(" ")[1];
-    // console.log(user);
-
-    // console.log(message.guild.members);
-
     message.channel.createInvite()
       .then(invite => getUser(message, user, invite))
       .catch(console.error)
@@ -94,11 +81,7 @@ app.listen(app.get('port'), function () {
   function getUser(message, user, invite) {
     for (key in members) {
       var member = members[key];
-      // console.log(member);
-      // console.log(user);
       if (member.names.includes(user)) {
-        // console.log(client.fetchUser(member.id));
-        // console.log(invite.url)
         client.fetchUser(member.id)
           .then(person => dmUser(person, invite))
           .catch(console.error);
@@ -110,9 +93,9 @@ app.listen(app.get('port'), function () {
 
   function dmUser(user, invite) {
     // user.createDM();
-    console.log(invite.url);
-    console.log(user);
-    user.send(invite.url);
+    user.send(invite.url)
+      .then(message => console.log(`Sent message: ${message.content}`))
+      .catch(console.error);
   }
 
   function changeName(message) {
@@ -135,7 +118,6 @@ app.listen(app.get('port'), function () {
   function kickUser(message) {
     const users = message.mentions.users;
     users.forEach(function (user) {
-      console.log(user);
       const id = user.id;
       const member = message.guild.members.get(id);
       if (user.username.toLowerCase() === members[0].names[0].toLowerCase()) {
@@ -144,14 +126,12 @@ app.listen(app.get('port'), function () {
         return;
       }
       member.kick();
-      console.log(message.author.username);
       message.channel.send(user.username + " was removed by " + message.author);
     });
   }
 
   function searchAnime(message) {
     var animeSearch = message.content.split("!anime ")[1];
-    console.log(animeSearch);
     getRequest(animeSearch, message);
   }
 
@@ -215,10 +195,9 @@ app.listen(app.get('port'), function () {
     function handleData(data) {
       var list = data.data;
       var text = list.Page.media;
-      text.forEach(function (anime) {
-        console.log(anime.id);
-      });
-
+      // text.forEach(function (anime) {
+      //   console.log(anime.id);
+      // });
       composeMessageSuccess(text, message);
     }
 

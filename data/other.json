@@ -1,7 +1,5 @@
 {
-  "reply1" : "smh",
   "url" :  "https://graphql.anilist.co",
   "url2" : "https://anilist.co/anime/",
-  "reply2" : "Sorry, could not find that anime.",
-  "n" : "nichijou"
+  "reply2" : "Sorry, could not find that anime."
 }
