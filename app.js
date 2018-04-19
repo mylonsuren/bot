@@ -133,12 +133,18 @@ app.listen(app.get('port'), function () {
         return;
       }
 
-      message.channel.createInvite()
-        .then(invite => dmUserKick(invite, member))
-        .catch(console.error)
-
-      member.kick();
-      message.channel.send(user.username + " was removed by " + message.author);
+      if (!member.user.bot) {
+        message.channel.createInvite()
+          .then(invite => dmUserKick(invite, member))
+          .catch(console.error);
+      }
+      
+      member.kick()
+        .then(() => message.channel.send((member.nickname === null ? user.username:member.nickname) + " was removed by " + message.author))
+        .catch(() => {
+          console.error;
+          message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username:member.nickname) + "***. \nPlease check your server settings.");
+        });
     });
   }
 
