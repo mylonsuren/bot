@@ -13,16 +13,17 @@ const app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
+setInterval(function () {
+  http.get("https://turtles-bot.herokuapp.com/");
+}, 300000);
+
 app.get('/', function (request, response) {
   var result = 'App is running';
   response.send(result);
 }).listen(app.get('port'), function () {
   console.log('App is running, server is listening on port ', app.get('port'));
 
-  var http = require("http");
-  setInterval(function () {
-    http.get("https://turtles-bot.herokuapp.com/");
-  }, 300000);
+
 
   const client = new discord.Client({
     token: auth.token,
