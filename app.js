@@ -132,9 +132,20 @@ app.listen(app.get('port'), function () {
       } else if (message.author.username.toLowerCase === members[3].names[0].toLowerCase()) {
         return;
       }
+
+      message.channel.createInvite()
+        .then(invite => dmUserKick(invite, member))
+        .catch(console.error)
+
       member.kick();
       message.channel.send(user.username + " was removed by " + message.author);
     });
+  }
+
+  function dmUserKick(invite, member) {
+    member.createDM()
+      .then(channel => channel.send(invite.url))
+      .catch(console.error)
   }
 
   function searchAnime(message) {
