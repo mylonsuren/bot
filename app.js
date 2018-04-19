@@ -133,7 +133,7 @@ function kickUser(message) {
 }
 
 function searchAnime(message) {
-  var animeSearch = message.content.split("!search ")[1];
+  var animeSearch = message.content.split("!find ")[1];
   console.log(animeSearch);
   getRequest(animeSearch, message);
 }
