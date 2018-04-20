@@ -22,19 +22,22 @@ var rt = function (message) {
     const id = user.id;
     const member = message.guild.members.get(id);
     const lastMessage = member.lastMessage;
-
-    message.channel.send({
-      embed: {
-        color: 3447003,
-        author: {
-          name: lastMessage.author.username,
-          icon_url: lastMessage.author.avatarURL
-        },
-        title: member.username,
-        description: lastMessage.content,
-        timestamp: new Date(),
-      }
-    });
+    if (lastMessage === null) {
+      message.channel.send("Sorry, unable to locate the last message sent by ***" + member.username + "***");
+    } else {
+      message.channel.send({
+        embed: {
+          color: 3447003,
+          author: {
+            name: lastMessage.author.username,
+            icon_url: lastMessage.author.avatarURL
+          },
+          title: member.username,
+          description: lastMessage.content,
+          timestamp: new Date(),
+        }
+      });
+    }
 
   });
 }
