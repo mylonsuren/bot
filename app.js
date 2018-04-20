@@ -82,8 +82,8 @@ app.listen(app.get('port'), function () {
         embed: {
           color: 3447003,
           author: {
-            name: message.author.username,
-            icon_url: message.author.avatarURL
+            name: lastMessage.author.username,
+            icon_url: lastMessage.author.avatarURL
           },
           title: member.username,
           description: lastMessage.content,
