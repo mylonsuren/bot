@@ -1,6 +1,3 @@
-
-
-
 const discord = require('discord.js');
 const request = require('request');
 const fetch = require('isomorphic-fetch')
