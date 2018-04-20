@@ -19,6 +19,7 @@ const changeName = require('./scripts/nickname');
 const help = require('./scripts/help');
 const invite = require('./scripts/invite');
 const find  = require('./scripts/find');
+const googleSearch = require('./scripts/googleSearch');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -62,6 +63,9 @@ app.listen(app.get('port'), function () {
           break;
         case 'add':
           invite(message, client);
+          break;
+        case 'google':
+          googleSearch(message);
           break;
         case '?':
         case 'help':

@@ -33,6 +33,10 @@ const help = function (message) {
           value: "!anime animeTitle"
         },
         {
+          name: "***Google Search***",
+          value: "!google searchRequest"
+        },
+        {
           name: "***RT***",
           value: "!rt @Member \n*Note: This command has known issues and may not work all the time.*"
         }

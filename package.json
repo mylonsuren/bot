@@ -5,12 +5,15 @@
   "main": "app.js",
   "author": "Mylon",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.3.2",
     "es6-promise": "^4.2.4",
     "express": "^4.16.3",
     "http": "0.0.0",
     "isomorphic-fetch": "^2.2.1",
-    "request": "^2.85.0"
+    "querystring": "^0.2.0",
+    "request": "^2.85.0",
+    "snekfetch": "^3.6.4"
   },
   "scripts": {
     "start": "node app.js"
