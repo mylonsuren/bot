@@ -55,6 +55,7 @@ app.listen(app.get('port'), function () {
           break;
         case 'rt' :
           rt(message);
+          break;
         case 'add':
           inviteUser(message);
           break;
@@ -75,7 +76,7 @@ app.listen(app.get('port'), function () {
       const id = user.id;
       const member = message.guild.members.get(id);
       const lastMessage = member.lastMessage;
-      
+
       message.channel.send({embed: {
         color: 3447003,
         author: {
