@@ -27,10 +27,16 @@ var googleCommand = function (msg) {
     let googleData = $('.r').first().find('a').first().attr('href');
     googleData = querystring.parse(googleData.replace('/url?', ''));
     console.log(googleData);
-    msg.channel.send(googleData.q)
+
+    msg.channel.send(googleData.q);
+    if (googleData['https://maps.google.com/maps?um']) {
+      var searchMap = searchRequest.replace(" ", "+");
+      msg.channel.send('https://www.google.com/maps/search/?api=1&query=' + searchMap);
+    }
+
 
   }).catch((err) => {
-    msg.channel.send("No results found for your search: *" + searchRequest + "*.");
+    msg.channel.send("No results found for your search: *" + searchRequest + "*");
     console.log(err);
   });
 }
