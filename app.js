@@ -66,9 +66,13 @@ app.listen(app.get('port'), function () {
     }
   });
 
-
   client.login(auth.token);
 
+  /**
+   * Imitates the 'retweeting' of the mentioned
+   * user's last message
+   * @param {Message} message 
+   */
   function rt(message) {
     const users = message.mentions.users;
 
@@ -93,9 +97,36 @@ app.listen(app.get('port'), function () {
     });
   }
 
+  /**
+   * Outputs the list of commands for the bot
+   * @param {Message} message 
+   */
   function help(message) {
-    const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Find Anime : !anime animeTitle";
-    message.channel.send(text);
+    message.channel.send({
+      embed: {
+        color: 3447003,
+        title: "Command List",
+        description: "Below are the list of commands for the bot.",
+        fields: [
+          {
+            name: "***Remove User***",
+            value: "!kick @Member"
+          }, 
+          {
+            name: "**Change User Nickname***",
+            value: "!name @Member newName"
+          }, 
+          {
+            name: "***RT***",
+            value: "!rt @Member"
+          }, 
+          {
+            name: "***Find Anime***",
+            value: "!anime animeTitle"
+          }
+        ],
+      }
+    })
   }
 
   function inviteUser(message) {
@@ -112,14 +143,12 @@ app.listen(app.get('port'), function () {
         client.fetchUser(member.id)
           .then(person => dmUser(person, invite, message))
           .catch(console.error);
-
         break;
       }
     }
   }
 
   function dmUser(user, invite, value) {
-    // user.createDM();
     user.send(invite.url)
       .then(message => console.log(`Sent message: ${message.content}`))
       .catch(error => dmUserError(error, user, value));
@@ -127,9 +156,7 @@ app.listen(app.get('port'), function () {
 
   function dmUserError(error, user, message) {
     console.log(error);
-
     message.channel.send("Sorry, unable to invite ***" + user.username + "*** \nPlease create an invite manually.")
-
   }
 
   function changeName(message) {
@@ -188,9 +215,7 @@ app.listen(app.get('port'), function () {
 
   function composeMessageSuccess(list, message) {
     var response = "**" + list[0].title.romaji + "**";
-
     message.channel.send(response + "\n " + other.url2 + list[0].id)
-
   }
 
 
@@ -246,9 +271,6 @@ app.listen(app.get('port'), function () {
     function handleData(data) {
       var list = data.data;
       var text = list.Page.media;
-      // text.forEach(function (anime) {
-      //   console.log(anime.id);
-      // });
       composeMessageSuccess(text, message);
     }
 
