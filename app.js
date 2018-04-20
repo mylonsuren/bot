@@ -18,7 +18,7 @@ app.get('/', function (request, response) {
   response.send(result);
 })
 
-app.get('/quit', function(req,res) {
+app.get('/quit', function (req, res) {
   res.send('closing..');
   http.get("https://turtles-bot.herokuapp.com/");
 })
@@ -53,7 +53,7 @@ app.listen(app.get('port'), function () {
         case 'name':
           changeName(message);
           break;
-        case 'rt' :
+        case 'rt':
           rt(message);
           break;
         case 'add':
@@ -77,17 +77,18 @@ app.listen(app.get('port'), function () {
       const member = message.guild.members.get(id);
       const lastMessage = member.lastMessage;
 
-      message.channel.send({embed: {
-        color: 3447003,
-        author: {
-          name: message.author.username,
-          icon_url: message.author.avatarURL
-        },
-        title: member.username,
-        description: lastMessage.content,
-        timestamp: new Date(),
-      }
-    });
+      message.channel.send({
+        embed: {
+          color: 3447003,
+          author: {
+            name: message.author.username,
+            icon_url: message.author.avatarURL
+          },
+          title: member.username,
+          description: lastMessage.content,
+          timestamp: new Date(),
+        }
+      });
 
     });
   }
@@ -164,12 +165,12 @@ app.listen(app.get('port'), function () {
           .then(invite => dmUserKick(invite, member))
           .catch(console.error);
       }
-      
+
       member.kick()
-        .then(() => message.channel.send((member.nickname === null ? user.username:member.nickname) + " was removed by " + message.author))
+        .then(() => message.channel.send((member.nickname === null ? user.username : member.nickname) + " was removed by " + message.author))
         .catch(() => {
           console.error;
-          message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username:member.nickname) + "***. \nPlease check your server settings.");
+          message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
         });
     });
   }
@@ -195,23 +196,23 @@ app.listen(app.get('port'), function () {
 
   function getRequest(value, message) {
     var query = `
-    query ($id: Int, $page: Int, $perPage: Int, $search: String) {
-      Page (page: $page, perPage: $perPage) {
-        pageInfo {
-          total
-          currentPage
-          lastPage
-          hasNextPage
-          perPage
-        }
-        media (id: $id, search: $search) {
-          id
-          title {
-            romaji
+      query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+        Page (page: $page, perPage: $perPage) {
+          pageInfo {
+            total
+            currentPage
+            lastPage
+            hasNextPage
+            perPage
+          }
+          media (id: $id, search: $search) {
+            id
+            title {
+              romaji
+            }
           }
         }
-      }
-    }`;
+      }`;
 
     var variables = {
       search: value,
