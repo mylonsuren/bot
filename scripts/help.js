@@ -29,12 +29,12 @@ const help = function (message) {
           value: "!name @Member newName"
         }, 
         {
-          name: "***RT***",
-          value: "!rt @Member"
-        }, 
-        {
           name: "***Find Anime***",
           value: "!anime animeTitle"
+        },
+        {
+          name: "***RT***",
+          value: "!rt @Member \n*Note: This command has known issues and may not work all the time.*"
         }
       ],
     }
