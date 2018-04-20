@@ -53,6 +53,8 @@ app.listen(app.get('port'), function () {
         case 'name':
           changeName(message);
           break;
+        case 'rt' :
+          rt(message);
         case 'add':
           inviteUser(message);
           break;
@@ -65,6 +67,29 @@ app.listen(app.get('port'), function () {
 
 
   client.login(auth.token);
+
+  function rt(message) {
+    const users = message.mentions.users;
+
+    users.forEach(function (user) {
+      const id = user.id;
+      const member = message.guild.members.get(id);
+      const lastMessage = member.lastMessage;
+      
+      message.channel.send({embed: {
+        color: 3447003,
+        author: {
+          name: message.author.username,
+          icon_url: message.author.avatarURL
+        },
+        title: member.username,
+        description: lastMessage.content,
+        timestamp: new Date(),
+      }
+    });
+
+    });
+  }
 
   function help(message) {
     const text = "**Bot Commands** \n Kicking Members: !kick @Member \n Change Name: !name @Member newName \n Find Anime : !anime animeTitle";
