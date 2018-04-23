@@ -7,5 +7,5 @@ ____
 #### Commands
 
 ##### Removing Users
-##### * !kick @Member
+!kick @Member
 
