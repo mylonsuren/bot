@@ -17,7 +17,12 @@ const app = express();
 
 var googleCommand = function (msg) {
 
-  const searchRequest = msg.content.split("!google ")[1];
+  var searchRequest = "";
+  if (msg.content.includes('!google')) {
+    searchRequest = msg.content.split("!google ")[1];
+  } else {
+    searchRequest = msg.content.split("!wiki ")[1];
+  }
   
   var searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchRequest)}`;
 
@@ -32,7 +37,6 @@ var googleCommand = function (msg) {
     } else if (googleData.q) {
       msg.channel.send(googleData.q);
     } else {
-      // msg.channel.send("*Try searching for: " + googleData['/search?q'] + "*");
       msg.channel.send("No results found for your search: *" + searchRequest + "*");
     }
   }).catch((err) => {

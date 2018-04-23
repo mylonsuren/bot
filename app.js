@@ -20,6 +20,7 @@ const help = require('./scripts/help');
 const invite = require('./scripts/invite');
 const find  = require('./scripts/find');
 const googleSearch = require('./scripts/googleSearch');
+const wiki = require('./scripts/wiki');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -30,7 +31,6 @@ app.get('/', function (request, response) {
 
 app.listen(app.get('port'), function () {
   console.log('App is running, server is listening on port ', app.get('port'));
-
   const client = new discord.Client({
     token: auth.token,
     autorun: true
@@ -49,6 +49,9 @@ app.listen(app.get('port'), function () {
       var args = message.content.substring(1).split(' ');
       var cmd = args[0];
       switch (cmd) {
+        case 'wiki' :
+          wiki(message);
+          break;
         case 'kick':
           removeUser(message);
           break;
