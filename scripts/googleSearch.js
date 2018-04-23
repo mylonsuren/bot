@@ -32,10 +32,9 @@ var googleCommand = function (msg) {
     } else if (googleData.q) {
       msg.channel.send(googleData.q);
     } else {
-      msg.channel.send("*Try searching for: " + googleData['/search?q'] + "*");
+      // msg.channel.send("*Try searching for: " + googleData['/search?q'] + "*");
+      msg.channel.send("No results found for your search: *" + searchRequest + "*");
     }
-
-
   }).catch((err) => {
     msg.channel.send("No results found for your search: *" + searchRequest + "*");
     console.log(err);
