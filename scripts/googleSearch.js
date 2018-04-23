@@ -34,18 +34,17 @@ var googleCommand = function (msg) {
     let googleData = $('.r').first().find('a').first().attr('href');
     googleData = querystring.parse(googleData.replace('/url?', ''));
     var searchMap = searchRequest.replace(" ", "+");
+    console.log(googleData);
     if (googleData['https://maps.google.com/maps?um']) {
       msg.channel.send('***' + googleData.q + "***");
       msg.channel.send('https://www.google.com/maps/search/?api=1&query=' + searchMap);
     } else if (googleData.q) {
-      console.log(googleData);
       msg.channel.send(googleData.q);
     } else if (googleData['/search?q']) {
       console.log("Checking wikipedia...")
       const searchTerm = googleData['/search?q'];
       wiki(msg, googleData['/search?q']);
     } else {
-      console.log(googleData);
       msg.channel.send("No results found for your search: *" + searchRequest + "*");
     }
   }).catch((err) => {
