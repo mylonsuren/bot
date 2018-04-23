@@ -41,5 +41,4 @@ var googleCommand = function (msg) {
   });
 }
 
-
 module.exports = googleCommand;
