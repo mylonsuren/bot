@@ -34,13 +34,11 @@ var wikiCommand = function (msg, searchQuery) {
     searchUrl = `https://en.wikipedia.org/wiki/` + searchQuery;
   } else {
     searchUrl = `https://en.wikipedia.org/wiki/` + searchRequest;
-    console.log(searchUrl);
   }
   
   return snekfetch.get(searchUrl).then((result) => {
     let $ = cheerio.load(result.text);
     msg.channel.send(searchUrl);
-    console.log(searchUrl);
   }).catch((err) => {
     // msg.channel.send("No Wikipedia results for your query: *" + searchRequest + "*. \nBelow is the result of an attempted Google search.");
     if (!fromGoogle) {
