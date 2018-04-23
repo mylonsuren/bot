@@ -14,14 +14,17 @@ const members = require("../data/members.json");
 const other = require("../data/other.json");
 const app = express();
 
+const wiki = require('./wiki');
 
 var googleCommand = function (msg) {
 
   var searchRequest = "";
   if (msg.content.includes('!google')) {
     searchRequest = msg.content.split("!google ")[1];
-  } else {
+  } else if (msg.content.includes('!wiki')) {
     searchRequest = msg.content.split("!wiki ")[1];
+  } else {
+    searchRequest = msg;
   }
   
   var searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchRequest)}`;
@@ -35,8 +38,14 @@ var googleCommand = function (msg) {
       msg.channel.send('***' + googleData.q + "***");
       msg.channel.send('https://www.google.com/maps/search/?api=1&query=' + searchMap);
     } else if (googleData.q) {
+      console.log(googleData);
       msg.channel.send(googleData.q);
+    } else if (googleData['/search?q']) {
+      console.log("Checking wikipedia...")
+      const searchTerm = googleData['/search?q'];
+      wiki(msg, googleData['/search?q']);
     } else {
+      console.log(googleData);
       msg.channel.send("No results found for your search: *" + searchRequest + "*");
     }
   }).catch((err) => {

@@ -13,20 +13,42 @@ const members = require("../data/members.json");
 const other = require("../data/other.json");
 const app = express();
 
-const google = require("./googleSearch");
 
-var wikiCommand = function (msg) {
+var wikiCommand = function (msg, searchQuery) {
+  const googleSearch = require("./googleSearch");
+  
+  var fromGoogle = false;
+  var searchRequest = "";
+  if (msg.content.includes("!wiki")) {
+    searchRequest = msg.content.split("!wiki ")[1];
+  } else if (msg.content.includes("!google")) {
+    console.log("From google")
+    fromGoogle = true;
+    searchRequest = msg.content.split("!google ")[1];
+  } else {
+    searchRequest = msg;
+  }
 
-  const searchRequest = msg.content.split("!wiki ")[1];
-  var searchUrl = `https://en.wikipedia.org/wiki/` + searchRequest;
-
+  var searchUrl = "";
+  if (searchQuery) {
+    searchUrl = `https://en.wikipedia.org/wiki/` + searchQuery;
+  } else {
+    searchUrl = `https://en.wikipedia.org/wiki/` + searchRequest;
+    console.log(searchUrl);
+  }
+  
   return snekfetch.get(searchUrl).then((result) => {
     let $ = cheerio.load(result.text);
     msg.channel.send(searchUrl);
+    console.log(searchUrl);
   }).catch((err) => {
-    msg.channel.send("No Wikipedia results for your query: *" + searchRequest + "*. \nBelow is the result of an attempted Google search.");
-    google(msg);
-    console.log(err);
+    // msg.channel.send("No Wikipedia results for your query: *" + searchRequest + "*. \nBelow is the result of an attempted Google search.");
+    if (!fromGoogle) {
+      googleSearch(msg);
+    } else {
+      msg.channel.send("\nSorry, could not find any results for your search.");
+      console.log(err);
+    } 
   });
 }
 
