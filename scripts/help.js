@@ -25,7 +25,7 @@ const help = function (message) {
           value: "!kick @Member"
         }, 
         {
-          name: "**Change User Nickname***",
+          name: "***Change User Nickname***",
           value: "!name @Member newName"
         }, 
         {
