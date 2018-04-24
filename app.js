@@ -44,6 +44,23 @@ app.listen(app.get('port'), function () {
       .catch(console.error);
   });
 
+  client.on('guildMemberUpdate', member => {
+    console.log("guild member update");
+  });
+
+  client.on('guildUpdate', (oldGuild, newGuild) => {
+    console.log('guild update');
+  });
+
+  client.on('channelUpdate', (oldChannel, newChannel) => {
+    console.log('channel update');
+
+    if (oldChannel.name != newChannel.name) {
+      newChannel.send("Channel name was changed to ***" + newChannel.name + "***");
+    }
+
+  });
+
   client.on('message', message => {
     if (message.content.substring(0, 1) == '!') {
       var args = message.content.substring(1).split(' ');
