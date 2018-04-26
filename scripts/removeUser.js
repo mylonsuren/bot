@@ -38,7 +38,11 @@ const kickUser = function (message) {
         .then(() => message.channel.send((member.nickname === null ? user.username : member.nickname) + " was removed by " + message.author))
         .catch(() => {
           console.error;
-          message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
+          if (member.user.username === "test-bot") {
+            message.channel.send("I can't remove myself from the chat.");
+          } else {
+            message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
+          }
         });
     }, 2000);
 
