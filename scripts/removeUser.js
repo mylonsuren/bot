@@ -28,17 +28,21 @@ const kickUser = function (message) {
     }
 
     if (!member.user.bot) {
+      console.log(member.user);
       message.channel.createInvite()
         .then(invite => dmUserKick(invite, member))
         .catch(console.error);
     }
 
-    member.kick()
-      .then(() => message.channel.send((member.nickname === null ? user.username : member.nickname) + " was removed by " + message.author))
-      .catch(() => {
-        console.error;
-        message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
-      });
+    setTimeout(function () {
+      member.kick()
+        .then(() => message.channel.send((member.nickname === null ? user.username : member.nickname) + " was removed by " + message.author))
+        .catch(() => {
+          console.error;
+          message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
+        });
+    }, 2000);
+
   });
 }
 
