@@ -21,7 +21,7 @@ const kickUser = function (message) {
     if (user.username.toLowerCase() === members[0].names[0].toLowerCase()) {
       return;
     } else if (message.author.username.toLowerCase === members[3].names[0].toLowerCase()) {
-      // return;
+      return;
     } else if ((message.author.id === members[1].id) && (user.username.toLowerCase() === members[0].names[0].toLowerCase())) {
       return;
     }
