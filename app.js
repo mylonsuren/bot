@@ -52,6 +52,16 @@ app.listen(app.get('port'), function () {
     console.log('guild update');
   });
 
+  client.on('guildMemberRemove', member => {
+    client.channels.get("265297922789212160").createInvite()
+        .then(invite => {
+          member.createDM()
+            .then(channel => channel.send(invite.url))
+            .catch(console.error)
+        })
+        .catch(console.error)
+  });
+
   client.on('channelUpdate', (oldChannel, newChannel) => {
     console.log('channel update');
 

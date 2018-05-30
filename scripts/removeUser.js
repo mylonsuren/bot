@@ -23,22 +23,29 @@ const kickUser = function (message) {
     } else if (message.author.id === members[3].id) {
       return;
     } else if ((message.author.id === members[1].id) && (user.username.toLowerCase() === members[0].names[0].toLowerCase())) {
-      console.log("Aldrin attempt to remove Mylon");
       return;
     }
 
     if (!member.user.bot) {
+      console.log(member.user);
       message.channel.createInvite()
         .then(invite => dmUserKick(invite, member))
         .catch(console.error);
     }
 
-    member.kick()
-      .then(() => message.channel.send((member.nickname === null ? user.username : member.nickname) + " was removed by " + message.author))
-      .catch(() => {
-        console.error;
-        message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
-      });
+    setTimeout(function () {
+      member.kick()
+        .then(() => message.channel.send((member.nickname === null ? user.username : member.nickname) + " was removed by " + message.author))
+        .catch(() => {
+          console.error;
+          if (member.user.username === "test-bot") {
+            message.channel.send("I can't remove myself from the chat.");
+          } else {
+            message.channel.send("Unable to remove ***" + (member.nickname === null ? user.username : member.nickname) + "***. \nPlease check your server settings.");
+          }
+        });
+    }, 2000);
+
   });
 }
 
