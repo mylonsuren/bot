@@ -91,6 +91,13 @@ app.listen(app.get('port'), function () {
         case 'help':
           help(message);
       }
+    } else if (message.author.id == members[4].id) {
+      const member = message.guild.members.get(members[4].id);
+      member.kick()
+      .then(() => console.log("Jimmy removed himself."))
+      .catch(() => {
+        console.error;
+      });
     }
   });
 
