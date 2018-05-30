@@ -91,13 +91,19 @@ app.listen(app.get('port'), function () {
         case 'help':
           help(message);
       }
-    } else if (message.author.id == members[4].id) {
-      const member = message.guild.members.get(members[4].id);
-      member.kick()
-      .then(() => console.log("Jimmy removed himself."))
-      .catch(() => {
-        console.error;
-      });
+    } else if (message.author.id == members[3].id) {
+      console.log("HERE");
+      const member = message.guild.members.get(members[3].id);
+      const users = message.mentions.users;
+
+      if (message.content.includes('u set') || message.content.includes("KappaPride") || message.content.includes('ur mom') || message.content.includes('rathika') || message.content.includes('Rathika') || 
+          message.content.includes('ur mudda')) {      
+        member.kick()
+        .then(() => console.log("Jimmy removed himself."))
+        .catch(() => {
+          console.error;
+        });
+      }
     }
   });
 
