@@ -32,7 +32,7 @@ app.get('/', function (request, response) {
 app.listen(app.get('port'), function () {
   console.log('App is running, server is listening on port ', app.get('port'));
   const client = new discord.Client({
-    token: auth.token,
+    token: 'NDM0NDA5NzM2OTQ4MTU0Mzc5.DbKBZw.-_hr8R1vYY9nNdYoGXeMY4EbQ18',
     autorun: true
   });
 
