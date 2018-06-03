@@ -107,13 +107,22 @@ app.listen(app.get('port'), function () {
       const users = message.mentions.users;
 
       if (message.content.includes('u set') || message.content.includes("KappaPride") || message.content.includes('ur mom') || message.content.includes('rathika') || message.content.includes('Rathika') || 
-          message.content.includes('ur mudda')) {      
+          message.content.includes('ur mudda') || message.content.includes('set') || message.content.includes('$et')) {      
         member.kick()
         .then(() => console.log("Jimmy removed himself."))
         .catch(() => {
           console.error;
         });
       }
+
+      users.forEach(function (user) {
+        if (user.id == members[1].id) {
+          member.kick()
+          .then(() => console.log("Jimmy removed by mentioning another user"))
+          .catch(() => console.error)
+        }
+      });
+
     }
   });
 
