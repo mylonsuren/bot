@@ -55,9 +55,9 @@ const kickUser = function (message) {
  * @param {GuildMember} member 
  */
 const dmUserKick = function (invite, member) {
-  member.createDM()
-    .then(channel => channel.send(invite.url))
-    .catch(console.error)
+  // member.createDM()
+  //   .then(channel => channel.send(invite.url))
+  //   .catch(console.error)
 }
 
 module.exports = kickUser;
