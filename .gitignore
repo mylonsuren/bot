@@ -13,6 +13,7 @@
 message-mention.json
 sample-message.json
 test.json
+node_modules
 
 # Packages #
 ############
