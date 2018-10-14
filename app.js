@@ -18,7 +18,7 @@ const removeUser = require('./scripts/removeUser');
 const changeName = require('./scripts/nickname');
 const help = require('./scripts/help');
 const invite = require('./scripts/invite');
-const find  = require('./scripts/find');
+const find = require('./scripts/find');
 const googleSearch = require('./scripts/googleSearch');
 const wiki = require('./scripts/wiki');
 
@@ -78,7 +78,7 @@ app.listen(app.get('port'), function () {
       var args = message.content.substring(1).split(' ');
       var cmd = args[0];
       switch (cmd) {
-        case 'wiki' :
+        case 'wiki':
           wiki(message);
           break;
         case 'kick':
@@ -104,28 +104,30 @@ app.listen(app.get('port'), function () {
           help(message);
       }
     } else if (message.author.id == members[3].id) {
-      console.log("HERE");
+      console.log("Jimmy sent a message.");
       const member = message.guild.members.get(members[3].id);
       const users = message.mentions.users;
 
-      if (message.content.includes("KappaPride") || message.content.includes('ur mom') || message.content.includes('rathika') || message.content.includes('Rathika') || 
-          message.content.includes('ur mudda') || message.content.includes('set') || message.content.includes('$et')) {      
+      if (message.content.includes('KappaPride') || message.content.includes('ur mom') || message.content.includes('rathika') || message.content.includes('Rathika') ||
+        message.content.includes('ur mudda') || message.content.includes('set') || message.content.includes('$et') ||
+        message.content.includes('mom') || message.content.includes('mother') || message.content.includes('mama')) {
         member.kick()
-        .then(() => console.log("Jimmy removed himself."))
-        .catch(() => {
-          console.error;
+          .then(() => console.log("Jimmy removed himself."))
+          .catch(() => {
+            console.error;
+          });
+      } else {
+        users.forEach(function (user) {
+          if (user.id == members[1].id || user.id == members[0].id) {
+            console.log("user mentioned resulted in removal");
+            member.kick()
+              .then(() => console.log("Jimmy removed by mentioning another user"))
+              .catch(() => console.error)
+          }
         });
       }
-
-      users.forEach(function (user) {
-        if (user.id == members[1].id) {
-          member.kick()
-          .then(() => console.log("Jimmy removed by mentioning another user"))
-          .catch(() => console.error)
-        }
-      });
-
     }
+
   });
 
   client.login(auth.token);
