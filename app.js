@@ -52,14 +52,16 @@ app.listen(app.get('port'), function () {
     console.log('guild update');
   });
 
+  // Used for creating and sending invite for removed user,
+  // temporarily removed
   client.on('guildMemberRemove', member => {
-    client.channels.get("265297922789212160").createInvite()
-        .then(invite => {
-          member.createDM()
-            .then(channel => channel.send(invite.url))
-            .catch(console.error)
-        })
-        .catch(console.error)
+    // client.channels.get("265297922789212160").createInvite()
+    //     .then(invite => {
+    //       member.createDM()
+    //         .then(channel => channel.send(invite.url))
+    //         .catch(console.error)
+    //     })
+    //     .catch(console.error)
   });
 
   client.on('channelUpdate', (oldChannel, newChannel) => {
