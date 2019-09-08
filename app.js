@@ -127,11 +127,19 @@ app.listen(app.get('port'), function () {
             console.error;
           });
   
+      } else if (message.content.includes('kbbq')) {
+        member.kick()
+          .then(() => console.log("Jimmy removed for mentioning kbbq"))
+          .catch(() => {
+            console.error;
+          });
+  
       }
 
       // if (message.content.includes('KappaPride') || message.content.includes('ur mom') || message.content.includes('rathika') || message.content.includes('Rathika') ||
       //   message.content.includes('ur mudda') || message.content.includes('set') || message.content.includes('$et') ||
       //   message.content.includes('mom') || message.content.includes('mother') || message.content.includes('mama')) {
+      // if (message.content.includes('kbbq')) {
       //   member.kick()
       //     .then(() => console.log("Jimmy removed himself."))
       //     .catch(() => {
