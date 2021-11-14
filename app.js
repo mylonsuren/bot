@@ -54,15 +54,7 @@ app.listen(app.get('port'), function () {
 
   // Used for creating and sending invite for removed user,
   // temporarily removed
-  client.on('guildMemberRemove', member => {
-    // client.channels.get("265297922789212160").createInvite()
-    //     .then(invite => {
-    //       member.createDM()
-    //         .then(channel => channel.send(invite.url))
-    //         .catch(console.error)
-    //     })
-    //     .catch(console.error)
-  });
+  client.on('guildMemberRemove', member => { });
 
   client.on('channelUpdate', (oldChannel, newChannel) => {
     console.log('channel update');
@@ -104,13 +96,12 @@ app.listen(app.get('port'), function () {
         case 'help':
           help(message);
       }
-    } else if (message.author.id == members[3].id) {
-      console.log("Jimmy sent a message.");
+    } else if (message.author.id == members[3].id) {      // Filter for Member 3
+      
       const member = message.guild.members.get(members[3].id);
       const users = message.mentions.users;
 
-      // Handle Tags from User
-
+      // Handle Tags from Member 3
       if (message.mentions.users.size > 0) {
         console.log("Message contains tags.")
   
@@ -122,39 +113,12 @@ app.listen(app.get('port'), function () {
         });
 
         member.kick()
-          .then(() => console.log("Jimmy removed for mentioning user"))
-          .catch(() => {
-            console.error;
-          });
-  
-      } else if (message.content.includes('kbbq')) {
-        member.kick()
-          .then(() => console.log("Jimmy removed for mentioning kbbq"))
+          .then(() => console.log("Member removed for mentioning user"))
           .catch(() => {
             console.error;
           });
   
       }
-
-      // if (message.content.includes('KappaPride') || message.content.includes('ur mom') || message.content.includes('rathika') || message.content.includes('Rathika') ||
-      //   message.content.includes('ur mudda') || message.content.includes('set') || message.content.includes('$et') ||
-      //   message.content.includes('mom') || message.content.includes('mother') || message.content.includes('mama')) {
-      // if (message.content.includes('kbbq')) {
-      //   member.kick()
-      //     .then(() => console.log("Jimmy removed himself."))
-      //     .catch(() => {
-      //       console.error;
-      //     });
-      // } else {
-      //   users.forEach(function (user) {
-      //     if (user.id == members[1].id || user.id == members[0].id) {
-      //       console.log("user mentioned resulted in removal");
-      //       member.kick()
-      //         .then(() => console.log("Jimmy removed by mentioning another user"))
-      //         .catch(() => console.error)
-      //     }
-      //   });
-      // }
     }
 
   });
