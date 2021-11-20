@@ -1,31 +1,47 @@
 
 [ 
   {
-    "names" : ["mylon", "Mylon"],
+    "names" : ["Mylon"],
     "id" : "267790240092127232" 
   },
   {
-    "names" : ["Aldrin", "aldrin"],
+    "names" : ["Aldrin"],
     "id" : "265297435390115841"
   },
   {
-    "names" : ["pratham", "prat", "Pratham", "Prat"],
+    "names" : ["Pratham"],
     "id" : "430198257789173761"
-  }, {
-    "names" : ["Jimmy", "jimmy"],
+  }, 
+  {
+    "names" : ["Jimmy"],
     "id" : "279117850281639937"
-  }, {
-    "names" : ["Nav", "Navid", "navid"],
+  }, 
+  {
+    "names" : ["Navid"],
     "id" : "264896877978189835"
-  }, {
-    "names" : ["Chris", "chris", "Seniow", "seniow"],
+  }, 
+  {
+    "names" : ["Chris"],
     "id" : "267805819737735178"
-  }, {
-    "names" : ["rob", "Rob", "Robert", "robert"],
+  }, 
+  {
+    "names" : ["Robert"],
     "id" : "433082791274479625"
   },
   {
-    "names" : ["map", "test"],
-    "id" : "436534247621263361"
+    "names" : ["Alex"],
+    "id" : "435582219906449418"
+  },
+  {
+    "names" : ["Nicholas"],
+    "id" : "267788617794060288"
+  },
+  {
+    "names" : ["Artur"],
+    "id" : "284546001233248257"
+  },
+  {
+    "names" : ["Dennis"],
+    "id" : "155458562137653248"
   }
 ]
