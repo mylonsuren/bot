@@ -1,18 +1,15 @@
 "use strict";
-/**
- *
- *
- */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const members_json_1 = __importDefault(require("../data/members.json"));
-const modUser = (user, message) => {
-    if (user.id !== members_json_1.default.Jimmy.id) {
-        return false;
-    }
-    const CONTENTS = message.content;
-    const MENTIONS = message.mentions;
-    return true;
+exports.filterMsg = void 0;
+const filterJimmy_1 = require("./filter/filterJimmy");
+const filterMsg = (message) => {
+    const author = message.author;
+    // if (
+    // 	author.id === members.Jimmy.id &&
+    // 	FILTER_LIST.some((word) => message.content.toLowerCase().includes(word))
+    // ) {
+    (0, filterJimmy_1.filterJimmy)(author, message);
+    // }
 };
+exports.filterMsg = filterMsg;
+// const modUser = (user: User, message: Message) => {};
