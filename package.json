@@ -1,31 +1,31 @@
 {
-  "name": "test-bot",
-  "version": "0.0.1",
-  "description": "test-bot-test",
-  "main": "app.js",
-  "author": "Mylon",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "discord.js": "^11.3.2",
-    "es6-promise": "^4.2.4",
-    "express": "^4.16.3",
-    "http": "0.0.0",
-    "isomorphic-fetch": "^2.2.1",
-    "querystring": "^0.2.0",
-    "request": "^2.85.0",
-    "snekfetch": "^3.6.4"
-  },
-  "scripts": {
-    "start": "node app.js"
-  },
-  "devDependencies": {},
+  "name": "discord-bot",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mylonsuren/bot.git"
+    "url": "git+https://github.com/mylonsuren/discord-bot.git"
   },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mylonsuren/bot/issues"
-  },
-  "homepage": "https://github.com/mylonsuren/bot#readme"
+  "scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "eslint . --ext .ts",
+		"build": "tsc",
+		"start": "tsc && node ./src/index.js"
+	},
+	"author": "Mylon",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/lodash": "^4.14.177",
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"eslint": "^8.3.0",
+		"tslint": "^6.1.3",
+		"typescript": "^4.5.2"
+	},
+	"dependencies": {
+		"discord.js": "^13.3.1",
+		"express": "^4.17.1",
+		"lodash": "^4.17.21"
+	}
 }

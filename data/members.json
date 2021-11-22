@@ -1,47 +1,134 @@
-
-[ 
-  {
-    "names" : ["Mylon"],
-    "id" : "267790240092127232" 
-  },
-  {
-    "names" : ["Aldrin"],
-    "id" : "265297435390115841"
-  },
-  {
-    "names" : ["Pratham"],
-    "id" : "430198257789173761"
-  }, 
-  {
-    "names" : ["Jimmy"],
-    "id" : "279117850281639937"
-  }, 
-  {
-    "names" : ["Navid"],
-    "id" : "264896877978189835"
-  }, 
-  {
-    "names" : ["Chris"],
-    "id" : "267805819737735178"
-  }, 
-  {
-    "names" : ["Robert"],
-    "id" : "433082791274479625"
-  },
-  {
-    "names" : ["Alex"],
-    "id" : "435582219906449418"
-  },
-  {
-    "names" : ["Nicholas"],
-    "id" : "267788617794060288"
-  },
-  {
-    "names" : ["Artur"],
-    "id" : "284546001233248257"
-  },
-  {
-    "names" : ["Dennis"],
-    "id" : "155458562137653248"
-  }
-]
+{
+	"Aldrin": {
+		"name": "Aldrin",
+		"id": "265297435390115841",
+		"secret_santa": {
+			"2017": "Chris",
+			"2018": "Pratham",
+			"2019": "Artur",
+			"2020": "",
+			"2021": "Robert",
+			"2022": "Navid"
+		}
+	},
+	"Alex": {
+		"name": "Alex",
+		"id": "435582219906449418",
+		"secret_santa": {
+			"2017": "Navid",
+			"2018": "Aldrin",
+			"2019": "Robert",
+			"2020": "",
+			"2021": "Jimmy",
+			"2022": "Chris"
+		}
+	},
+	"Artur": {
+		"name": "Artur",
+		"id": "284546001233248257",
+		"secret_santa": {
+			"2017": "Alex",
+			"2018": "Robert",
+			"2019": "Jimmy",
+			"2020": "",
+			"2021": "Dennis",
+			"2022": "Nicholas"
+		}
+	},
+	"Chris": {
+		"name": "Chris",
+		"id": "267805819737735178",
+		"secret_santa": {
+			"2017": "Artur",
+			"2018": "Mylon",
+			"2019": "Aldrin",
+			"2020": "",
+			"2021": "Alex",
+			"2022": "Pratham"
+		}
+	},
+	"Dennis": {
+		"name": "Dennis",
+		"id": "155458562137653248",
+		"secret_santa": {
+			"2017": "Robert",
+			"2018": "Navid",
+			"2019": "Alex",
+			"2020": "",
+			"2021": "Pratham",
+			"2022": "Artur"
+		}
+	},
+	"Jimmy": {
+		"name": "Jimmy",
+		"id": "279117850281639937",
+		"secret_santa": {
+			"2017": "Dennis",
+			"2018": "Alex",
+			"2019": "Chris",
+			"2020": "",
+			"2021": "Navid",
+			"2022": "Aldrin"
+		}
+	},
+	"Mylon": {
+		"name": "Mylon",
+		"id": "267790240092127232",
+		"secret_santa": {
+			"2017": "Jimmy",
+			"2018": "Nicholas",
+			"2019": "Navid",
+			"2020": "",
+			"2021": "Chris",
+			"2022": "Alex"
+		}
+	},
+	"Navid": {
+		"name": "Navid",
+		"id": "264896877978189835",
+		"secret_santa": {
+			"2017": "Pratham",
+			"2018": "Jimmy",
+			"2019": "Dennis",
+			"2020": "",
+			"2021": "Nicholas",
+			"2022": "Mylon"
+		}
+	},
+	"Nicholas": {
+		"name": "Nicholas",
+		"id": "267788617794060288",
+		"secret_santa": {
+			"2017": "Aldrin",
+			"2018": "Dennis",
+			"2019": "Pratham",
+			"2020": "",
+			"2021": "Mylon",
+			"2022": "Jimmy"
+		}
+	},
+	"Pratham": {
+		"name": "Pratham",
+		"id": "430198257789173761",
+		"secret_santa": {
+			"2017": "Nicholas",
+			"2018": "Artur",
+			"2019": "Mylon",
+			"2020": "",
+			"2021": "Aldrin",
+			"2022": "Robert"
+		}
+	},
+	"Robert": {
+		"name": "Robert",
+		"id": "433082791274479625",
+		"secret_santa": {
+			"2017": "Mylon",
+			"2018": "Chris",
+			"2019": "Nicholas",
+			"2020": "",
+			"2021": "Artur",
+			"2022": "Dennis"
+		}
+	}
+}
