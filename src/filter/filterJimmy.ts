@@ -1,4 +1,4 @@
-import { FILTER_LIST } from "../../data/censor.json";
+import { FILTER_LIST } from "../../../data/censor.json";
 import { Message } from "discord.js";
 import _ from "lodash";
 

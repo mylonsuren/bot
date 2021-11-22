@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
-import { VIDEOS } from "../data/media.json";
-import members from "../data/members.json";
+import { VIDEOS } from "../../data/media.json";
+import members from "../../data/members.json";
 import { sendReplyToMessage } from "./sendMessage";
 
 export const replyPratKazooVideo = async (message: Message) => {

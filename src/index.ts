@@ -1,5 +1,5 @@
 import { Client, Intents, Message } from "discord.js";
-import auth from "../data/auth.json";
+import auth from "../../data/auth.json";
 import { filterMsg } from "./filter/filter";
 import { replyPratKazooVideo } from "./kazoo";
 
