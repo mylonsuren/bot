@@ -1,4 +1,3 @@
-
 # Compiled source #
 ###################
 *.com
@@ -10,10 +9,13 @@
 *.idea
 *.iml
 *.bin
-message-mention.json
-sample-message.json
-test.json
 node_modules
+package-lock.json
+
+# Data #
+########
+data/
+
 
 # Packages #
 ############
