@@ -44,35 +44,6 @@ app.listen(app.get('port'), function () {
     //   .catch(console.error);
   });
 
-
-  // Secret Santa Stuff
-
-  client.on('message', message => {
-    
-    let args = message.content.substring(0, 5);
-
-    switch (args) {
-      case 'santa':
-
-        const Embed = new RichEmbed()
-          .setTitle("Your Secret Santa Draw")
-          .setColor(0xFF0000)
-          .setDescription("You got {name}")
-
-        message.author.send(Embed)
-
-      break;
-    }
-
-      
-
-
-  })
-
-
-  // End of Secret Santa stuff
-
-  /*
   client.on('guildMemberUpdate', member => {
     console.log("guild member update");
   });
@@ -151,7 +122,6 @@ app.listen(app.get('port'), function () {
     }
 
   });
-  */
 
   client.login(auth.token);
 });
